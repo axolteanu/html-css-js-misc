@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #select-wrapper{
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        display: flex;
+        --side-padding: 10px;
+      }
+      #teams{
+        appearance: none;
+        font-family: inherit;
+        font-size: inherit;
+        border-color: gray;
+        padding-left: var(--side-padding);
+        background-color: rgba(211, 211, 211, 0.3);
+        cursor: pointer;
+      }
+      #teams > option{
+        background-color: white;
+        padding-left: 0px; 
+        font-size: 14px;
+      }
+
+      #teams:focus{
+        outline: none;
+      }
+      #teams:hover{
+        background-color: lightgray;
+      }
+      #teams:hover > option{
+        background-color: white;
+      }
+      #sizer{
+        position: absolute;
+        height: 100%;
+        box-sizing: border-box;
+        white-space: nowrap;
+        top:0;
+        border: 1px solid transparent;
+        color: transparent;
+        display:flex;
+        align-items: center;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        pointer-events: none;
+      }
+
+      #arrow{
+        padding-left: 8px;
+      }
+
+      nav{
+        height: 50px;
+        display: flex;
+      }
+
+      .wrapper > select{
+        appearance: none;
+        overflow-y:scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="select-wrapper">
+        <select id="teams">
+          <option selected>Oilers</option>
+          <option>Canadiens</option>
+          <option>Golden Knights</option>
+          <option>Avalanche</option>
+          <option>Lightning</option>
+          <option>Hurricane</option>
+          <option>Rangers</option>
+        </select>
+        <div id="sizer">
+          <span id="text"></span>
+          <svg id="arrow" width="8" height="4">
+            <polygon points="0,0 8,0 4,4" fill="black"/>
+          </svg>
+        </div>
+      </div>
+    </nav>
+    <script>
+      const selectElem = document.querySelector('#teams');
+
+      window.addEventListener('load', () => {
+        let option = selectElem.querySelector('option[selected]');
+        adjustSelectSize(option);
+      });
+
+      selectElem.addEventListener('change', (e) => {
+        adjustSelectSize(e.target);
+      });
+
+      function adjustSelectSize(elem){
+        let sizerTxt = document.querySelector('#sizer > span');
+        sizerTxt.innerHTML = elem.value;
+        selectElem.style.width = sizer.getBoundingClientRect().width + 'px';
+      }
+    </script>
+  </body>
+</html>
