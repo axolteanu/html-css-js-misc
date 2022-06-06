@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+        margin: 0;
+      }
+      #arc{
+        animation: rotate 1s linear infinite;
+        transform-origin: center;
+      }
+      @keyframes rotate {
+        from{
+          transform: rotate(0deg);
+        }
+        to{
+          transform: rotate(360deg);
+        }
+      }
+
+      svg{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="50" height="50">
+      <circle cx="25" cy="25" r="22" 
+      stroke="red" stroke-width="6" fill="none"/>
+      <path id="arc" fill="none" stroke-width="6.5" stroke="black" 
+            d="M 25 3
+               A 22 22 45 0 1 40 9"/>
+    </svg>
+  </body>
+</html>
