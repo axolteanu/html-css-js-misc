@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html, body{
+        height: 100%;
+      }
+
+      body{
+        margin:0;  
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #sliding-menu{
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid black;
+        box-sizing: border-box;
+      }
+
+      #title{
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+
+      #menu-container{
+        position: relative;
+        flex-grow: 1;
+        border-left: none;
+        display: flex;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        direction: rtl;
+      }
+
+      #menu-container h3{
+        display: block;
+        padding-left: 20px;
+      }
+
+      #menu-container a{
+        display: block;
+        padding: 20px 0 20px 20px;
+        cursor: pointer;
+      }
+
+      #menu-container a:hover{
+        background-color: lightblue;
+      }
+
+      #main-menu{
+        direction: initial;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        white-space: nowrap;
+        transition: transform 0.5s ease;
+        overflow-y: scroll;
+      }
+
+      .sub-menu{
+        direction: initial;
+        width: 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        white-space: nowrap;
+        transition: width 0.5s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="sliding-menu">
+      <div id="title">
+        <h1>Sliding Side Menu</h1>
+      </div>
+      <div id="menu-container">
+        <div id="main-menu">
+          <h3>Section 1</h3>
+          <a onclick="showSubMenu1()">Menu Item 1</a>
+          <a onclick="showSubMenu2()">Menu Item 2</a>
+          <a onclick="showSubMenu3()">Menu Item 3</a>
+        </div>
+        <div id="sub-menu-1" class="sub-menu">
+          <a onclick="showMainMenu()">< Main Menu</a>
+          <a>Sub Menu 1-1</a>
+          <a>Sub Menu 1-2</a>
+          <a>Sub Menu 1-3</a>
+          <a>Sub Menu 1-4</a>
+          <a>Sub Menu 1-5</a>
+        </div>
+        <div id="sub-menu-2" class="sub-menu">
+          <a onclick="showMainMenu()">< Main Menu</a>
+          <a>Sub Menu 2-1</a>
+          <a>Sub Menu 2-2</a>
+          <a>Sub Menu 2-3</a>
+        </div>
+        <div id="sub-menu-3" class="sub-menu">
+          <a onclick="showMainMenu()">< Main Menu</a>
+          <a>Sub Menu 3-1</a>
+          <a>Sub Menu 3-2</a>
+          <a>Sub Menu 3-3</a>
+          <a>Sub Menu 3-4</a>
+          <a>Sub Menu 3-5</a>
+          <a>Sub Menu 3-6</a>
+          <a>Sub Menu 3-7</a>
+          <a>Sub Menu 3-8</a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+
+      var activeSubMenuId = "";
+
+      function showSubMenu3(){
+        document.getElementById('main-menu').style.transform = 'translateX(-100%)';
+        document.getElementById('sub-menu-3').style.width = '100%';
+        activeSubMenuId = "sub-menu-3";
+      }
+
+      function showSubMenu2(){
+        document.getElementById('main-menu').style.transform = 'translateX(-100%)';
+        document.getElementById('sub-menu-2').style.width = '100%';
+        activeSubMenuId = "sub-menu-2";
+      }
+
+      function showSubMenu1(){
+        document.getElementById('main-menu').style.transform = 'translateX(-100%)';
+        document.getElementById('sub-menu-1').style.width = '100%';
+        activeSubMenuId = "sub-menu-1";
+      }
+
+      function showMainMenu(){
+        document.getElementById(activeSubMenuId).style.width = '0';
+        document.getElementById('main-menu').style.transform = 'translateX(0)';
+      }
+    </script>
+  </body>
+</html>

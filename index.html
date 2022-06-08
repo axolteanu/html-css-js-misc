@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,body{
+        height: 100%;
+      }
+      body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 100px 1fr;
+        grid-template-areas: 
+        'b a'
+        'b c';
+      }
+
+      header{
+        grid-area: a;
+        align-self: center;
+        justify-self: center;
+        padding-left: 5px;
+        letter-spacing: 5px;
+        font-variant-caps: small-caps;
+      }
+
+      nav{
+        grid-area: b;
+        width: 275px;
+        border-right: 1px solid black;
+      }
+
+      iframe{
+        grid-area: c;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>Miscellaneous Items</h1></header>
+    <nav></nav>
+    <iframe src="screen-load-animation.html"></iframe>
+  </body>
+</html>
